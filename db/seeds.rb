@@ -46,4 +46,19 @@ end
 ActiveRecord::Base.connection.reset_pk_sequence!("tester_devices")
 
 
+bug_csv_data = File.read(Rails.root.join("db", "data", "bugs.csv"))
+bug_data_without_headers = CSV.parse(bug_csv_data).drop(1)
+bug_data_without_headers.each do |device_data|
+  id, device_id, tester_id = device_data
+
+  Bug.create! do |bug|
+    bug.id = id
+    bug.device_id = device_id
+    bug.tester_id = tester_id
+  end
+end
+
+ActiveRecord::Base.connection.reset_pk_sequence!("bugs")
+
+
 puts "Done!"
