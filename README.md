@@ -1,24 +1,10 @@
-# README
+# Tester Matching
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Ongoing thought process
+ - Need to import test data via seeds
+ - Import testing suite from another project
+ - Setup models
+ - Setup a form with multiple inputs in simple form
+ - Filter bug information in simple form and group by user
+    - Not sure how to group by a user if there's no bugs for a certain user
+ - Display in a table
