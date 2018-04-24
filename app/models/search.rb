@@ -4,7 +4,7 @@ class Search
   attr_accessor :countries, :device_ids
 
   def results_grouped_by_tester
-    results.group(:tester_id).count
+    Hash.new(0).merge(results.group(:tester_id).count)
   end
 
   def results

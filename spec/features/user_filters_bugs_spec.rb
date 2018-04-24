@@ -3,6 +3,7 @@ require "spec_helper"
 feature "A user can filter bugs" do
   context "on the home page" do
     before(:each) do
+      Rails.application.load_seed
       visit root_path
     end
 
@@ -10,14 +11,20 @@ feature "A user can filter bugs" do
       select "US", from: "search_countries"
       click_on "Search"
 
-      expect(page).to have_content("{1=>114, 2=>99, 4=>125}")
+      results = "Miguel Bautista 114 Michael Lubavin 99 Leonard Sutton 0 Taybin \
+      Rutkin 125 Mingquan Zheng 0 Stanley Chen 0 Lucas Lowry 0 Sean Wellington 0\
+      Darshini Thiagarajan 0"
+      expect(page).to have_content(results)
     end
 
     specify "by device" do
       select "iPhone 5", from: "search_device_ids"
       click_on "Search"
 
-      expect(page).to have_content("{6=>110, 1=>30, 3=>32, 8=>30}")
+      results = "Miguel Bautista 30 Michael Lubavin 0 Leonard Sutton 32 Taybin \
+      Rutkin 0 Mingquan Zheng 0 Stanley Chen 110 Lucas Lowry 0 Sean Wellington \
+      30 Darshini Thiagarajan 0"
+      expect(page).to have_content(results)
     end
 
     specify "by both" do
@@ -25,7 +32,10 @@ feature "A user can filter bugs" do
       select "Droid DNA", from: "search_device_ids"
       click_on "Search"
 
-      expect(page).to have_content("{7=>21}")
+      results = "Miguel Bautista 0 Michael Lubavin 0 Leonard Sutton 0 Taybin \
+      Rutkin 0 Mingquan Zheng 0 Stanley Chen 0 Lucas Lowry 21 Sean Wellington 0\
+      Darshini Thiagarajan 0"
+      expect(page).to have_content(results)
     end
 
     specify "by two countries" do
@@ -33,7 +43,10 @@ feature "A user can filter bugs" do
       select "JP", from: "search_countries"
       click_on "Search"
 
-      expect(page).to have_content("{1=>114, 2=>99, 4=>125, 5=>109, 7=>117, 8=>116}")
+      results = "Miguel Bautista 114 Michael Lubavin 99 Leonard Sutton 0 Taybin\
+      Rutkin 125 Mingquan Zheng 109 Stanley Chen 0 Lucas Lowry 117 Sean \
+      Wellington 116 Darshini Thiagarajan 0"
+      expect(page).to have_content(results)
     end
   end
 end

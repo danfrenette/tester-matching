@@ -17,7 +17,8 @@ class SearchesController < ApplicationController
 
   def load_form_variables
     @search = Search.new
-    @countries = Tester.distinct.pluck(:country)
+    @testers = Tester.all
+    @countries = @testers.distinct.pluck(:country)
     @devices = Device.all
   end
 end
