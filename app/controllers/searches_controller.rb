@@ -11,6 +11,10 @@ class SearchesController < ApplicationController
 
   private
 
+  def search_params
+    params.require(:search).permit(countries: [], device_ids: [])
+  end
+
   def load_form_variables
     @search = Search.new
     @countries = Tester.distinct.pluck(:country)
