@@ -18,3 +18,17 @@ end
 ActiveRecord::Base.connection.reset_pk_sequence!("testers")
 
 puts "Done!"
+
+
+device_csv_data = File.read(Rails.root.join("db", "data", "devices.csv"))
+device_data_without_headers = CSV.parse(device_csv_data).drop(1)
+device_data_without_headers.each do |device_data|
+  id, description = device_data
+
+  Device.create! do |device|
+    device.id = id
+    device.description = description
+  end
+end
+
+ActiveRecord::Base.connection.reset_pk_sequence!("devices")
