@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'awesome_print'
