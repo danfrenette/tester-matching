@@ -23,6 +23,9 @@ button to see the results populated in the table below.
 
 ### Examples:
 
+ - "I want to see all the testers from every country and every device"
+    - Make sure both of the inputs read "All" and click the search button
+
  - "I want to see all the testers from the US who found bugs for the Galaxy S3"
     - Select "US" from the country dropdown, and "Galaxy S3" from the Device
       dropdown and click "Search". You should be presented with a list of all
@@ -38,3 +41,5 @@ button to see the results populated in the table below.
     - Not sure how to group by a user if there's no bugs for a certain user
  - Display in a table
  - Keep the raw data as well for tests
+ - Got to the end and remembered left joins is a thing (it hasn't been for a
+   while in Rails, and AND still isn't from what I can tell).
