@@ -3,10 +3,17 @@
 ### Setup
 ```
 git clone https://github.com/danfrenette/tester-matching.git
-cd tester_matching
+cd tester-matching
 bundle
 rake db:create db:migrate db:seed
 rails server
+```
+
+### Tests
+
+```
+rake db:migrate RAILS_ENV="test" # migrate database if not done already
+rspec spec/
 ```
 
 ### App Walkthrough
