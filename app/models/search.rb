@@ -4,11 +4,16 @@ class Search
   attr_accessor :countries, :device_ids
 
   def results_grouped_by_tester
-    Hash.new(0).merge(results.group(:tester_id).count)
+    result_ids = result.ids.to_s.tr("[]", "")
+    Tester.
+      joins("LEFT JOIN bugs ON bugs.tester_id = testers.id AND bugs.id IN (#{result_ids})").
+      group(["testers.first_name", "testers.last_name"]).
+      order("count_bugs_tester_id desc").
+      count("bugs.tester_id")
   end
 
-  def results
-    @_results = begin
+  def result
+    @_result = begin
                   base_scope = Bug.includes(:tester)
 
                   if countries.reject(&:empty?).present?

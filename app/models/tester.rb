@@ -1,5 +1,3 @@
 class Tester < ApplicationRecord
-  def name
-    "#{first_name} #{last_name}"
-  end
+  has_many :bugs
 end

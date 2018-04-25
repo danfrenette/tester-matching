@@ -23,10 +23,10 @@
         <th scope="col">Experience</th>
       </tr>
       <tbody>
-        <%- @testers.each do |tester| %>
+        <%- @search_results.each do |tester_name, exp| %>
           <tr>
-            <td><%= tester.name %></td>
-            <td><%= @search_results[tester.id] %></td>
+            <td><%= tester_name.join(" ") %></td>
+            <td><%= exp %></td>
           </tr>
         <% end %>
       </tbody>
